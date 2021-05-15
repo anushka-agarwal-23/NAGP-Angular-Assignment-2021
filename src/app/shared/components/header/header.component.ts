@@ -138,7 +138,7 @@ export class HeaderComponent implements OnInit {
         },
         {
           label: this.translate.instant('HEADER.COOKBOOK'), icon: 'pi pi-fw pi-book', command: () => {
-            this.productService.searchByCategory('Books', 'Cookbook');
+            this.productService.searchByCategory('Books', 'Cookbooks');
             this.router.navigate(['/home/product'] ,
              {​​​​​​​​ queryParams: {​​​​​​​​ category: 'Books', subcategory: 'Cookbook' }​​​​​​​​}​​​​​​​​);
           }
