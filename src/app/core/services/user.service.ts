@@ -17,7 +17,7 @@ export class UserService {
   }
 
   validateUser(employee: User): Observable<User> {
-    return this.http.get<User[]>('http://localhost:4200/assets/db/users.json')
+    return this.http.get<User[]>('/assets/db/users.json')
       .pipe(
         map(products => products.find((user: User) => employee.userName === user.userName && employee.password === user.password))
       );
@@ -35,7 +35,7 @@ export class UserService {
   }
 
   getEmployeeById(employeeID: string): Observable<User> {
-    return this.http.get<User[]>('http://localhost:4200/assets/db/users.json')
+    return this.http.get<User[]>('/assets/db/users.json')
       .pipe(
         map(products => products.find((user: User) => employeeID === user.userName))
       );

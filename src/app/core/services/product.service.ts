@@ -14,7 +14,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>('http://localhost:4200/assets/db/products.json')
+    return this.http.get<Product[]>('/assets/db/products.json')
     .pipe(
       tap(
         res => this.productData$.next(res)
@@ -23,14 +23,14 @@ export class ProductService {
   }
 
   getProductById(productId: number): Observable<Product> {
-    return this.http.get<Product[]>('http://localhost:4200/assets/db/products.json')
+    return this.http.get<Product[]>('/assets/db/products.json')
       .pipe(
         map(products => products.find((product: Product) => product.productId === productId))
       );
   }
 
   searchByKeyword(keyword: string) {
-    this.http.get('http://localhost:4200/assets/db/products.json').toPromise().then((res: Product[]) => {
+    this.http.get('/assets/db/products.json').toPromise().then((res: Product[]) => {
       this.productList = res.filter((product: Product) =>
         product.productName.toLowerCase().indexOf(keyword.toLowerCase()) !== -1);
       this.productData$.next(this.productList);
@@ -41,7 +41,7 @@ export class ProductService {
     if (subcategory === ''){
       subcategory = undefined;
     }
-    this.http.get('http://localhost:4200/assets/db/products.json').toPromise().then((res: Product[]) => {
+    this.http.get('/assets/db/products.json').toPromise().then((res: Product[]) => {
       if (category !== 'All'){
         this.productList = res.filter((product: Product) => product.productCategory.toLowerCase().indexOf(category.toLowerCase()) !== -1);
         if (subcategory !== undefined){
