@@ -11,7 +11,7 @@
               {{'LOGIN.INVALIDCRED' | translate}}</div>
             <label for="userName">{{'LOGIN.USERNAME' | translate}}</label>
             <input type="text" class="form-control" name="userName" formControlName="userName"
-              [ngClass]="getControlValidationClasses(f.userName)" placeholder="Enter User Name">
+              [ngClass]="getControlValidationClasses(f.userName)" placeholder="{{'LOGIN.ENTERUSERNAME' | translate}}">
             <div *ngIf="f.userName.touched && f.userName.errors?.required" class="invalid-feedback">
               {{'LOGIN.USERNAMEREQUIRED' | translate}}
             </div>
@@ -19,7 +19,7 @@
           <div class="form-group">
             <label for="password">{{'LOGIN.PASSWORD' | translate}}</label>
             <input type="password" class="form-control" name="password" formControlName="password"
-              [ngClass]="getControlValidationClasses(f.password)" placeholder="Enter Password">
+              [ngClass]="getControlValidationClasses(f.password)" placeholder="{{'LOGIN.ENTERPASSWORD' | translate}}">
             <div *ngIf="f.password.touched && f.password.errors?.required" class="invalid-feedback">
               {{'LOGIN.PASSWORDREQUIRED' | translate}}
             </div>

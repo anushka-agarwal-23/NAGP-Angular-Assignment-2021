@@ -124,6 +124,8 @@
     "PASSWORD": "Password",
     "INVALIDCRED": "Invalid Credentials",
     "USERNAMEREQUIRED": "Username is required",
-    "PASSWORDREQUIRED": "Password is required"
+    "PASSWORDREQUIRED": "Password is required",
+    "ENTERUSERNAME":"Enter User Name",
+    "ENTERPASSWORD":"Enter Password"
   }
 }

@@ -124,6 +124,8 @@
     "PASSWORD": "Mot de passe",
     "INVALIDCRED": "Les informations d'identification invalides",
     "USERNAMEREQUIRED": "Nom d'utilisateur est nécessaire",
-    "PASSWORDREQUIRED": "Mot de passe est nécessaire"
+    "PASSWORDREQUIRED": "Mot de passe est nécessaire",
+    "ENTERUSERNAME":"Saisissez votre nom d'utilisateur",
+    "ENTERPASSWORD":"Entrer le mot de passe"
   }
 }
