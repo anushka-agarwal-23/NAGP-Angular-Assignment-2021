@@ -1,0 +1,67 @@
+<header>
+  <div id="header">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-2">
+          <div class="header-logo">
+            <a routerLink="/" class="logo">
+              <img src="../../../assets/img/logo.png" alt="">
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="header-search">
+            <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+              <input type="text" class="form-control" name="value" formControlName="value" class="input"
+                placeholder="{{'HEADER.SEARCHHERE' | translate}}">
+              <button type="submit" class="search-btn" data-toggle="button" aria-pressed="false">{{'HEADER.SEARCH' |
+                translate}}</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-md-1 clearfix">
+          <div class="header-ctn">
+            <div class="dropdown">
+              <a style="cursor: pointer;" routerLink="/home/cart">
+                <i class="fa fa-shopping-cart"></i>
+                <span>{{'HEADER.CART' | translate}}</span>
+                <div class="qty">{{cartData?.data !== [] ? cartTotal : 0}}</div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <ul class="header-links">
+            <li><i class="fa fa-info"></i>
+              <select class="form-select" #langSelect (change)="translate.use(langSelect.value)">
+                <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</option>
+              </select>
+            </li>
+            <li><a style="cursor: pointer;" (click)="profilemenu.toggle($event)"><i class="fa fa-user-o"></i>
+                {{'HEADER.MYACCOUNT' | translate}}</a></li>
+            <p-menu #profilemenu [popup]="true" [model]="profileitems" appendTo="body"></p-menu>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav id="navigation">
+  <div class="container">
+    <div id="responsive-nav">
+      <ul class="main-nav nav py-2">
+        <li class="active"><a routerLink="/home/product">{{'HEADER.HOME' | translate}}</a></li>
+        <li><a icon="pi pi-list" (click)="menu.toggle($event)">{{'HEADER.CATEGORIES' | translate}}</a></li>
+        <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
+        <li><a routerLink="/home">{{'HEADER.TODAYSDEAL' | translate}}</a></li>
+        <li><a routerLink="/home">{{'HEADER.CONTACTUS' | translate}}</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

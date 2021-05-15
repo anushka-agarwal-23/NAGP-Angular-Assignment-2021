@@ -1,0 +1,84 @@
+<div class="section">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-4 col-xs-6">
+        <div class="shop">
+          <div class="shop-img">
+            <img src="./../../../assets/img/12.jpg" alt="">
+          </div>
+          <div class="shop-body">
+            <h3>{{'PRODUCTLIST.EATABLES' | translate}}<br>{{'PRODUCTLIST.COLLECTION' | translate}}</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-xs-6">
+        <div class="shop">
+          <div class="shop-img">
+            <img src="./../../../assets/img/wholesale-fashion-accessories.jpg" alt="">
+          </div>
+          <div class="shop-body">
+            <h3>{{'HEADER.ACCESSORIES' | translate}}<br>{{'PRODUCTLIST.COLLECTION' | translate}}</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-xs-6">
+        <div class="shop">
+          <div class="shop-img">
+            <img src="./../../../assets/img/Clothing-Waste.jpg" alt="">
+          </div>
+          <div class="shop-body">
+            <h3>{{'HEADER.CLOTHING' | translate}}<br>{{'PRODUCTLIST.COLLECTION' | translate}}</h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3 col-xs-6" *ngFor="let p of productDataChunk">
+    <div class="product">
+      <div class="product-img">
+        <img [src]="p.productImageUrl" alt="{{p.productName}}" (click)="selectProduct(p.productId)" class="card-img-top"
+          style="cursor:pointer;">
+        <div class="product-label">
+          <span class="sale" *ngIf="p.productPrice<250">-30%</span>
+          <span class="new" *ngIf="p.productPrice>500">{{'PRODUCTLIST.NEW' | translate}}</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <p class="product-category">{{p.productCategory}} - {{p.subCategory}}</p>
+        <h3 class="product-name"><a routerLink="/home/product/{{p.productId}}">{{p.productName | titlecase}}</a></h3>
+        <h4 class="product-price">{{p.productPrice | currency: ('PRODUCTLIST.CURRENCY' | translate) }}
+          <del class="product-old-price">{{p.productPrice*1.3 | currency: ('PRODUCTLIST.CURRENCY' | translate)}}</del>
+        </h4>
+        <div class="product-rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-o"></i>
+        </div>
+        <div class="product-btns">
+          <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+              class="tooltipp">{{'PRODUCTLIST.ADDTOWISHLIST' | translate}}</span>
+          </button>
+          <button class="quick-view" (click)="selectProduct(p.productId)"><i class="fa fa-eye"></i><span
+              class="tooltipp">{{'PRODUCTLIST.QUICKVIEW' | translate}}</span></button>
+        </div>
+      </div>
+      <div class="add-to-cart">
+        <button (click)="addProduct(p)" [disabled]="p.productQuantityAvailable < 1 || disable[p.productId - 1]"
+          class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>
+          {{ p.productQuantityAvailable < 1 || disable[p.productId - 1]? ('PRODUCTLIST.OUTOFSTOCK' | translate)
+            : 'PRODUCTLIST.ADDTOCART' | translate }} </button>
+      </div>
+    </div>
+  </div>
+</div>
+<p-paginator [rows]="12" pageLinkSize=3 [totalRecords]="productData.length" [rowsPerPageOptions]="[8,12,16]"
+  (onPageChange)="paginate($event)"></p-paginator>

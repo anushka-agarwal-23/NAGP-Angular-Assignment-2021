@@ -1,0 +1,83 @@
+<div class="section" id="breadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="breadcrumb-tree">
+          <li><a routerLink="/home">{{'HEADER.HOME' | translate}}</a></li>
+          <li><a routerLink="/home">{{'PRODUCTDETAIL.ALLCATEGORIES' | translate}}</a></li>
+          <li><a routerLink="/home">{{product?.productCategory}}</a></li>
+          <li><a routerLink="/home">{{product?.subCategory}}</a></li>
+          <li class="active">{{product?.productName}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    <div class="row d-flex">
+      <div class="col-md-6 col-md-push-2">
+        <div id="product-main-img">
+          <div class="product-preview">
+            <img [src]="product?.productImageUrl" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="product-details">
+          <h2 class="product-name">{{product?.productName}}</h2>
+          <div>
+            <div class="product-rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-o"></i>
+            </div>
+            <a class="review-link" routerLink="/home">10 {{'PRODUCTDETAIL.REVIEW' | translate}}(s) |
+              {{'PRODUCTDETAIL.ADDREVIEW' | translate}}</a>
+          </div>
+          <div>
+            <h3 class="product-price">{{product?.productPrice | currency: ('PRODUCTLIST.CURRENCY' | translate)}} </h3>
+            <span class="product-available" *ngIf="product?.productQuantityAvailable >= 1">{{'PRODUCTDETAIL.INSTOCK' |
+              translate}}</span>
+            <span class="product-available" *ngIf="product?.productQuantityAvailable < 1">{{'PRODUCTLIST.OUTOFSTOCK' |
+              translate}}</span>
+          </div>
+          <p>{{product?.productDescription}}</p>
+          <div class="add-to-cart">
+            <div class="qty-label">
+              Qty
+              <div class="input-number">
+                <input type="number" [max]="product?.productQuantityAvailable" id="number" min="0" [value]="quantity">
+                <span (click)="Increase()" class="qty-up">+</span>
+                <span (click)="Decrease()" class="qty-down">-</span>
+              </div>
+            </div>
+            <button (click)="addToCart(product)" [class.disabled]="quantity < 1"
+              *ngIf="product?.productQuantityAvailable >= 1" [class.btn-outline-danger]="quantity < 1"
+              [disabled]="quantity < 1" class="add-to-cart-btn"><i
+                class="fa fa-shopping-cart"></i>{{'PRODUCTLIST.ADDTOCART' | translate}}
+            </button>
+          </div>
+
+          <ul class="product-links">
+            <li>{{'PRODUCTDETAIL.CATEGORY' | translate}}:</li>
+            <li><a routerLink="/home">{{product?.productCategory}}</a></li>
+          </ul>
+
+          <ul class="product-links">
+            <li>{{'PRODUCTDETAIL.SHARE' | translate}}:</li>
+            <li><a routerLink="/home"><i class="fa fa-facebook"></i></a></li>
+            <li><a routerLink="/home"><i class="fa fa-twitter"></i></a></li>
+            <li><a routerLink="/home"><i class="fa fa-google-plus"></i></a></li>
+            <li><a routerLink="/home"><i class="fa fa-envelope"></i></a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

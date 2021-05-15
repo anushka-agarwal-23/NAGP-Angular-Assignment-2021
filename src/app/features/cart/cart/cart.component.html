@@ -1,0 +1,70 @@
+<ng-container *ngIf="cartData?.total === 0 || cartData === null">
+  <div class="text-center empty-cart my-5">
+    <h4>{{'CART.CARTEMPTY' | translate}}</h4>
+    <button class="btn btn-success mt-3" routerLink="/">{{'CART.GOTOSHOP' | translate}}</button>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="cartData !== null && cartData?.data.length !== 0">
+  <div class="row">
+    <div class="col my-4">
+      <table class="table">
+        <thead class="table-dark">
+          <tr class="text-center">
+            <th>{{'CART.IMAGE' | translate}}</th>
+            <th>{{'CART.TITLE' | translate}}</th>
+            <th>{{'CART.PRICE' | translate}}</th>
+            <th>{{'CART.QUANTITY' | translate}}</th>
+            <th>{{'CART.SUBTOTAL' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of cartData?.data; let i=index">
+            <td class="d-flex align-items-center justify-content-around">
+              <img [src]="c.product.productImageUrl" alt="{{c.product.productName}}" height="70" width="100"
+                class="order-1">
+              <span (click)="removeCartProduct(c.product)" class="text-danger" style="cursor: pointer;"><i
+                  class="fa fa-trash"></i></span>
+            </td>
+            <td>
+              <p>{{c.product.productName}}</p>
+            </td>
+            <td>
+              <p>{{c.product.productPrice | currency: ('PRODUCTLIST.CURRENCY' | translate)}}</p>
+            </td>
+            <td>
+              <form>
+                <div class="value-button" id="decrease" (click)="decreaseQuantity(i)">
+                  <i class="fa fa-minus"></i>
+                </div>
+                <input type="number" id="number" [value]="c.cartNum" readonly
+                  [max]="c.product.productQuantityAvailable" />
+                <div class="value-button" id="increase" (click)="increaseQuantity(i)">
+                  <i class="fa fa-plus"></i>
+                </div>
+              </form>
+            </td>
+            <td>
+              <p>{{c.cartNum * c.product.productPrice | currency: ('PRODUCTLIST.CURRENCY' | translate)}}</p>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>{{'CART.TOTAL' | translate}}:</td>
+            <td>{{cartProducts}}</td>
+            <td>{{cartTotal | currency: ('PRODUCTLIST.CURRENCY' | translate)}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-12 d-flex mb-5">
+      <div class="d-flex w-100 justify-content-between flex-sm-column flex-md-row">
+        <a routerLink="/home/checkout" class="btn btn-success btn-sm order-1">{{'CART.CHECKOUT' | translate}}</a>
+        <a routerLink="/" class="btn btn-success btn-sm order-0">{{'CART.CONTINUESHOPPING' | translate}}</a>
+      </div>
+    </div>
+
+  </div>
+</ng-container>

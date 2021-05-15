@@ -1,0 +1,38 @@
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col-4">
+        <form [formGroup]="loginForm" #login="ngForm" (ngSubmit)="onSubmit()">
+          <h4>{{'LOGIN.LOGINPAGE' | translate}}</h4>
+          <div class="form-group">
+            <div *ngIf="!userService.loggedIn$.getValue() && submitted === true" style="color: red;text-align: center;">
+              {{'LOGIN.INVALIDCRED' | translate}}</div>
+            <label for="userName">{{'LOGIN.USERNAME' | translate}}</label>
+            <input type="text" class="form-control" name="userName" formControlName="userName"
+              [ngClass]="getControlValidationClasses(f.userName)" placeholder="Enter User Name">
+            <div *ngIf="f.userName.touched && f.userName.errors?.required" class="invalid-feedback">
+              {{'LOGIN.USERNAMEREQUIRED' | translate}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">{{'LOGIN.PASSWORD' | translate}}</label>
+            <input type="password" class="form-control" name="password" formControlName="password"
+              [ngClass]="getControlValidationClasses(f.password)" placeholder="Enter Password">
+            <div *ngIf="f.password.touched && f.password.errors?.required" class="invalid-feedback">
+              {{'LOGIN.PASSWORDREQUIRED' | translate}}
+            </div>
+          </div>
+          <div style="text-align: center;">
+            <button type="submit" class="btn-outline-success btn my-2 btn-block" data-toggle="button"
+              aria-pressed="false" [disabled]="login.invalid">
+              {{'LOGIN.LOGINBUTTON' | translate}}
+            </button>
+          </div><br>
+        </form>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+</div>

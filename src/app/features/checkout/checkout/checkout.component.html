@@ -1,0 +1,206 @@
+<div class="section" *ngIf="cartData?.total > 0">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="checkout-details">
+          <div class="section-title">
+            <h3 class="title"> {{'CHECKOUT.DELIVERYDETAILS' | translate}}</h3>
+          </div>
+          <form [formGroup]="checkoutForm" #checkout="ngForm">
+            <div class="form-group">
+              <input class="input form-control" type="text" name="name" formControlName="name"
+                [ngClass]="getControlValidationClasses(f.name)" placeholder="Name">
+              <div *ngIf="f.name.touched && f.name.errors?.required" class="invalid-feedback">
+                {{'CHECKOUT.REQUIRED' | translate}}
+              </div>
+            </div>
+            <div class="form-group">
+              <input class="input form-control" type="text" name="email" formControlName="email"
+                [ngClass]="getControlValidationClasses(f.email)" placeholder="Email">
+              <div *ngIf="f.email.touched && f.email.errors?.required" class="invalid-feedback">
+                {{'CHECKOUT.REQUIRED' | translate}}
+              </div>
+              <div *ngIf="f.email.touched && f.email.errors?.email" class="invalid-feedback">
+                {{'CHECKOUT.INVALIDEMAIL' | translate}}
+              </div>
+            </div>
+            <div class="form-group">
+              <input class="input form-control" type="text" name="address" formControlName="address"
+                [ngClass]="getControlValidationClasses(f.address)" placeholder="Address">
+              <div *ngIf="f.address.touched && f.address.errors?.required" class="invalid-feedback">
+                {{'CHECKOUT.REQUIRED' | translate}}
+              </div>
+            </div>
+            <div class="form-group">
+              <input class="input form-control" type="text" name="city" formControlName="city"
+                [ngClass]="getControlValidationClasses(f.city)" placeholder="City">
+              <div *ngIf="f.city.touched && f.city.errors?.required" class="invalid-feedback">
+                {{'CHECKOUT.REQUIRED' | translate}}
+              </div>
+            </div>
+            <div class="form-group">
+              <input class="input form-control" type="text" name="country" formControlName="country"
+                [ngClass]="getControlValidationClasses(f.country)" placeholder="Country">
+              <div *ngIf="f.country.touched && f.country.errors?.required" class="invalid-feedback">
+                {{'CHECKOUT.REQUIRED' | translate}}
+              </div>
+            </div>
+            <div class="form-group">
+              <input class="input form-control" type="text" appNumbersOnly name="zipcode" formControlName="zipcode"
+                [ngClass]="getControlValidationClasses(f.zipcode)" placeholder="ZIP Code">
+              <div *ngIf="f.zipcode.touched && f.zipcode.errors?.required" class="invalid-feedback">
+                {{'CHECKOUT.REQUIRED' | translate}}
+              </div>
+              <div *ngIf="f.zipcode.touched && f.zipcode.errors?.maxlength" class="invalid-feedback">
+                {{'CHECKOUT.INVALIDZIP' | translate}}
+              </div>
+            </div>
+            <div class="form-group">
+              <input class="input form-control" type="text" appNumbersOnly name="phone" formControlName="phone"
+                [ngClass]="getControlValidationClasses(f.phone)" placeholder="Contact Number">
+              <div *ngIf="f.phone.touched && f.phone.errors?.required" class="invalid-feedback">
+                {{'CHECKOUT.REQUIRED' | translate}}
+              </div>
+              <div *ngIf="f.phone.touched && f.phone.errors?.maxlength" class="invalid-feedback">
+                {{'CHECKOUT.INVALIDCONTACT' | translate}}
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="shiping-details">
+          <div class="input-checkbox">
+            <input type="checkbox" id="shiping-address">
+            <label for="shiping-address">
+              <span></span>
+              {{'CHECKOUT.SHIPTODIFFERENTADDRESS' | translate}}?
+            </label>
+            <div class="caption">
+              <div class="section-title">
+                <h3 class="title">{{'CHECKOUT.SHIPPINGDETAILS' | translate}}</h3>
+              </div>
+              <form [formGroup]="shippingForm" #shipping="ngForm">
+                <div class="form-group">
+                  <input class="input form-control" type="text" name="name" formControlName="name"
+                    [ngClass]="getControlValidationClasses(g.name)" placeholder="Name">
+                  <div *ngIf="g.name.touched && g.name.errors?.required" class="invalid-feedback">
+                    {{'CHECKOUT.REQUIRED' | translate}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input class="input form-control" type="text" name="email" formControlName="email"
+                    [ngClass]="getControlValidationClasses(g.email)" placeholder="Email">
+                  <div *ngIf="g.email.touched && g.email.errors?.required" class="invalid-feedback">
+                    {{'CHECKOUT.REQUIRED' | translate}}
+                  </div>
+                  <div *ngIf="g.email.touched && g.email.errors?.email" class="invalid-feedback">
+                    {{'CHECKOUT.INVALIDEMAIL' | translate}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input class="input form-control" type="text" name="address" formControlName="address"
+                    [ngClass]="getControlValidationClasses(g.address)" placeholder="Address">
+                  <div *ngIf="g.address.touched && g.address.errors?.required" class="invalid-feedback">
+                    {{'CHECKOUT.REQUIRED' | translate}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input class="input form-control" type="text" name="city" formControlName="city"
+                    [ngClass]="getControlValidationClasses(g.city)" placeholder="City">
+                  <div *ngIf="g.city.touched && g.city.errors?.required" class="invalid-feedback">
+                    {{'CHECKOUT.REQUIRED' | translate}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input class="input form-control" type="text" name="country" formControlName="country"
+                    [ngClass]="getControlValidationClasses(g.country)" placeholder="Country">
+                  <div *ngIf="g.country.touched && g.country.errors?.required" class="invalid-feedback">
+                    {{'CHECKOUT.REQUIRED' | translate}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input class="input form-control" type="text" appNumbersOnly name="zipcode" formControlName="zipcode"
+                    [ngClass]="getControlValidationClasses(g.zipcode)" placeholder="ZIP Code">
+                  <div *ngIf="g.zipcode.touched && g.zipcode.errors?.required" class="invalid-feedback">
+                    {{'CHECKOUT.REQUIRED' | translate}}
+                  </div>
+                  <div *ngIf="g.zipcode.touched && g.zipcode.errors?.maxlength" class="invalid-feedback">
+                    {{'CHECKOUT.INVALIDZIP' | translate}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input class="input form-control" type="text" appNumbersOnly name="phone" formControlName="phone"
+                    [ngClass]="getControlValidationClasses(g.phone)" placeholder="Contact Number">
+                  <div *ngIf="g.phone.touched && g.phone.errors?.required" class="invalid-feedback">
+                    {{'CHECKOUT.REQUIRED' | translate}}
+                  </div>
+                  <div *ngIf="g.phone.touched && g.phone.errors?.maxlength" class="invalid-feedback">
+                    {{'CHECKOUT.INVALIDPHONE' | translate}}
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5 order-details">
+        <div class="section-title text-center">
+          <h3 class="title">{{'CHECKOUT.YOURORDER' | translate}}</h3>
+        </div>
+        <div class="order-summary">
+          <div class="order-col">
+            <div><strong>{{'CHECKOUT.PRODUCT' | translate}}</strong></div>
+            <div><strong>{{'CHECKOUT.SUBTOTAL' | translate}}</strong></div>
+          </div>
+          <div class="order-products">
+            <div class="order-col" *ngFor="let c of cartData?.data;">
+              <div><b>{{c.cartNum}}</b> x {{c.product.productName}}</div>
+              <div>{{(c.product.productPrice*c.cartNum) | currency: ('PRODUCTLIST.CURRENCY' | translate)}}</div>
+            </div>
+          </div>
+          <div class="order-col">
+            <div>{{'CHECKOUT.SHIPPING' | translate}}</div>
+            <div><strong>{{'CHECKOUT.FREE' | translate}}</strong></div>
+          </div>
+          <div class="order-col dropdown-divider">
+            <div><strong>{{'CART.TOTAL' | translate}}</strong></div>
+            <div><strong class="order-total">{{cartTotal | currency: ('PRODUCTLIST.CURRENCY' | translate)}}</strong></div>
+          </div>
+        </div>
+        <div class="payment-method">
+          <div class="input-radio">
+            <input type="radio" name="payment" id="payment-1" [checked]=true>
+            <label for="payment-1">
+              <span></span>
+              {{'CHECKOUT.DEBITCARD' | translate}}
+            </label>
+          </div>
+          <div class="input-radio">
+            <input type="radio" name="payment" id="payment-2">
+            <label for="payment-2">
+              <span></span>
+              {{'CHECKOUT.CREDITCARD' | translate}}
+            </label>
+          </div>
+          <div class="input-radio">
+            <input type="radio" name="payment" id="payment-3">
+            <label for="payment-3">
+              <span></span>
+              {{'CHECKOUT.CASHONDELIVERY' | translate}}
+            </label>
+          </div>
+        </div>
+        <div class="input-checkbox">
+          <input type="checkbox" id="terms" (change)="handlechange($event)">
+          <label for="terms">
+            <span></span>
+            {{'CHECKOUT.TNC' | translate}}
+          </label>
+        </div>
+        <button type="submit" routerLink="/home/order" class="btn-outline-success btn-sm my-2 btn-block"
+          [disabled]="!acceptedTNC || checkout.invalid" (click)="onCheckout()">{{'CHECKOUT.PLACEORDER' | translate}}</button>
+      </div>
+    </div>
+  </div>
+</div>
