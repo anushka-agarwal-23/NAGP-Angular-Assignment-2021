@@ -43,10 +43,10 @@ export class ProductService {
     }
     this.http.get('/assets/db/products.json').toPromise().then((res: Product[]) => {
       if (category !== 'All'){
-        this.productList = res.filter((product: Product) => product.productCategory.toLowerCase().indexOf(category.toLowerCase()) !== -1);
+        this.productList = res.filter((product: Product) => product.productCategory.toLowerCase() === category.toLowerCase());
         if (subcategory !== undefined){
           this.productList = this.productList.filter((product: Product) =>
-          product.subCategory.toLowerCase().indexOf(subcategory.toLowerCase()) !== -1);
+          product.subCategory.toLowerCase() === subcategory.toLowerCase());
         }
       }else{
         this.productList = res;
