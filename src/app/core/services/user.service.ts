@@ -13,7 +13,7 @@ export class UserService {
   loggedIn$ = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private router: Router) {
-    this.loggedIn$.next(localStorage.getItem('userName') !== undefined ? true : false);
+    this.loggedIn$.next(localStorage.getItem('userName') !== null ? true : false);
   }
 
   validateUser(employee: User): Observable<User> {

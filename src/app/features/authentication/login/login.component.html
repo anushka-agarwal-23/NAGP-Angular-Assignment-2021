@@ -7,7 +7,7 @@
         <form [formGroup]="loginForm" #login="ngForm" (ngSubmit)="onSubmit()">
           <h4>{{'LOGIN.LOGINPAGE' | translate}}</h4>
           <div class="form-group">
-            <div *ngIf="!userService.loggedIn$.getValue() && submitted === true" style="color: red;text-align: center;">
+            <div *ngIf="!loggedIn && submitted === true" style="color: red;text-align: center;">
               {{'LOGIN.INVALIDCRED' | translate}}</div>
             <label for="userName">{{'LOGIN.USERNAME' | translate}}</label>
             <input type="text" class="form-control" name="userName" formControlName="userName"

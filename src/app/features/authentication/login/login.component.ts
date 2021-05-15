@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   returnUrl: string;
+  loggedIn: boolean;
 
   constructor(private router: Router, public userService: UserService, private formBuilder: FormBuilder,
               private route: ActivatedRoute) { }
@@ -52,11 +53,13 @@ export class LoginComponent implements OnInit {
     this.userService.validateUser(this.user)
       .subscribe(response => {
         if (response !== undefined) {
+          this.loggedIn = true;
           this.userService.loggedIn$.next(true);
           this.router.navigateByUrl(this.returnUrl);
           localStorage.setItem('userName', this.user.userName);
         }
         else{
+          this.loggedIn = false;
           this.userService.loggedIn$.next(false);
         }
       });
