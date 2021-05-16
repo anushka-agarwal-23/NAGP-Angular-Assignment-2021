@@ -88,8 +88,8 @@
     "TOTAL": "LE TOTAL",
     "CHECKOUT": "Vérifier",
     "CONTINUESHOPPING": "Continuer vos achats",
-    "GOTOSHOP":"ALLEZ À LA BOUTIQUE",
-    "CARTEMPTY":"Votre panier est vide"
+    "GOTOSHOP":"Ajouter des articles de la boutique",
+    "CARTEMPTY":"Il n'y a rien dans votre panier!"
   },
   "CHECKOUT": {
     "DELIVERYDETAILS": "DÉTAILS DE LIVRAISON",

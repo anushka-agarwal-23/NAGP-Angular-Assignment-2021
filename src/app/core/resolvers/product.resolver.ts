@@ -25,6 +25,9 @@ export class ProductResolver implements Resolve<Product> {
         product = this.productService.getProductById(productId);
       }
     });
+    if (cartData.data[0] === undefined){
+      product = this.productService.getProductById(productId);
+    }
     return product;
   }
 }

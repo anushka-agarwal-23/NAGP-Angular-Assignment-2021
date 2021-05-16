@@ -88,8 +88,8 @@
     "TOTAL": "TOTAL",
     "CHECKOUT": "Checkout",
     "CONTINUESHOPPING": "Continue Shopping",
-    "GOTOSHOP":"GO TO SHOP",
-    "CARTEMPTY":"Your Cart is Empty"
+    "GOTOSHOP":"Add items from shop",
+    "CARTEMPTY":"There is nothing in your Cart!"
   },
   "CHECKOUT": {
     "DELIVERYDETAILS": "DELIVERY DETAILS",
