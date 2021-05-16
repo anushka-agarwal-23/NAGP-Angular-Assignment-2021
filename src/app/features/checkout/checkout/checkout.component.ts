@@ -13,7 +13,6 @@ export class CheckoutComponent implements OnInit {
 
   cartData: Cart;
   cartTotal: number;
-  showSpinner: boolean;
   checkoutForm: any;
   shippingForm: any;
   acceptedTNC = false;

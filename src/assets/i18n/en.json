@@ -109,7 +109,8 @@
     "REQUIRED":"Required field",
     "INVALIDEMAIL":"Please enter valid email",
     "INVALIDZIP":"Zip code must be of 6 digits",
-    "INVALIDPHONE":"Phone number must be of 10 digits"
+    "INVALIDPHONE":"Phone number must be of 10 digits",
+    "PAYMENTMETHOD":"Payment Method:"
   },
   "ORDER": {
     "THANKYOU": "Thank You",

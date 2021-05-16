@@ -109,7 +109,8 @@
     "REQUIRED":"champs requis",
     "INVALIDEMAIL":"Veuillez saisir une adresse e-mail valide",
     "INVALIDZIP":"Le code postal doit être composé de 6 chiffres",
-    "INVALIDPHONE":"Le numéro de téléphone doit être composé de 10 chiffres"
+    "INVALIDPHONE":"Le numéro de téléphone doit être composé de 10 chiffres",
+    "PAYMENTMETHOD":"Mode de paiement:"
   },
   "ORDER": {
     "THANKYOU": "Merci",
